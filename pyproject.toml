@@ -1,0 +1,13 @@
+[dependency-groups]
+dev = [
+    "ruff>=0.15.20",
+]
+
+[project]
+name = "SDLUploader"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["tesserocr @ https://github.com/simonflueckiger/tesserocr-windows_build/releases/download/tesserocr-v2.10.0-tesseract-5.5.2/tesserocr-2.10.0-cp313-cp313-win_amd64.whl"]
+
+[tool.ruff.lint]
+fixable = ["ALL"]
