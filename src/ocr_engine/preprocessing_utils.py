@@ -27,7 +27,7 @@ def page_to_numpy(page: pymupdf.Page, dpi: int = 300) -> np.ndarray:
 def deskew_image(img_grey: np.ndarray) -> np.ndarray:
     """
     Uses the deskew library to determine skew angles in a greyscale image.
-    Returns a new deskewed numpy array.
+    Returns a new deskewed numpy array. Skips the deskew if angle is suspicious (>45 degrees)
 
     Args:
         img_grey(np.ndarray): greyscale image as numpy array
@@ -38,6 +38,9 @@ def deskew_image(img_grey: np.ndarray) -> np.ndarray:
     angle = determine_skew(img_grey)
 
     if angle is None:
+        return img_grey
+
+    if abs(angle) >= 20:
         return img_grey
 
     h, w = img_grey.shape[:2]
