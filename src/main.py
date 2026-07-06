@@ -6,8 +6,8 @@ import logging
 
 import pymupdf
 
-from tesseract.tesseract_orchestrator import extract_text_from_pdf
-from config import PDF_PATH
+from src.ocr_engine.tesseract_engine import TesseractEngine
+from src.config import PDF_PATH, TESS_DATA_PATH
 
 logging.basicConfig(
     level=logging.INFO,
@@ -18,6 +18,9 @@ pdf = pymupdf.open(PDF_PATH)
 
 # text_stream is a generator that returns
 #  the corresponding iterable when called.
-text_stream = extract_text_from_pdf(pdf)
-for page_number, page_text in text_stream:
-    logging.info("Page %s scanned", page_number)
+if TESS_DATA_PATH is None:
+    raise RuntimeError("TESS_DATA_PATH missing")
+tesser_eng = TesseractEngine(TESS_DATA_PATH)
+for page_number, page_text in tesser_eng.process_doc(pdf):
+    logging.info("Processed page %s", page_number)
+    print(page_text)
