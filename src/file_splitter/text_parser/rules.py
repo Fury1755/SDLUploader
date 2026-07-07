@@ -30,7 +30,15 @@ def get_name(text: str) -> str | None:
     """
 
     for line in text.splitlines():
-        if "PTE" in line and "LTD" in line:
+        PTE = False
+        LTD = False
+
+        if ("Private" or "Pte") in line:
+            PTE = True
+        if ("Limited" or "Ltd") in line:
+            LTD = True
+
+        if PTE and LTD:
             return line
     return None
 
