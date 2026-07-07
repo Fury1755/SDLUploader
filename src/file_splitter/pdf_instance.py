@@ -49,7 +49,7 @@ class PDFInstance:
         assert self._current_name is not None
 
         safe_name = re.sub(r'[<>:"/\\|?*]', "_", self._current_name)
-        file_path = os.path.join(self._output_folder, f"SDL_{safe_name}.pdf")
+        file_path = os.path.join(self._output_folder, f"SDL_2025_{safe_name}.pdf")
         new_doc.save(file_path)
         new_doc.close()
 
