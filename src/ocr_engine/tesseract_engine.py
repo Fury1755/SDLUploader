@@ -104,7 +104,9 @@ class TesseractEngine(OCREngine):
             raise RuntimeError(
                 "tesseract.tesseract_orchestrator.py received None in TESS_DATA_PATH"
             )
-        with self._get_api():
-            for i in range(len(doc)):  # pylint: disable=C0200
-                page = doc[i]
-                yield (i, self.process_page(page))
+
+        self._get_api()
+        for i in range(len(doc)):  # pylint: disable=C0200
+            page = doc[i]
+            yield (i, self.process_page(page))
+        self._close_api()
