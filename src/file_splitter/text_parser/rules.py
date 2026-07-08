@@ -33,9 +33,9 @@ def get_name(text: str) -> str | None:
         PTE = False
         LTD = False
 
-        if ("Private" or "Pte") in line:
+        if "Private" in line or "Pte" in line:
             PTE = True
-        if ("Limited" or "Ltd") in line:
+        if "Limited" in line or "Ltd" in line:
             LTD = True
 
         if PTE and LTD:
