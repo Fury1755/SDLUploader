@@ -33,10 +33,16 @@ def get_name(text: str) -> str | None:
         PTE = False
         LTD = False
 
-        if "Private" in line or "Pte" in line:
-            PTE = True
-        if "Limited" in line or "Ltd" in line:
-            LTD = True
+        pte_array = ["Private", "Pte"]
+        ltd_array = ["Limited", "Ltd"]
+
+        for word in pte_array:
+            if re.search(re.compile(word, re.IGNORECASE), line):
+                PTE = True
+
+        for word in ltd_array:
+            if re.search(re.compile(word, re.IGNORECASE), line):
+                LTD = True
 
         if PTE and LTD:
             return line
