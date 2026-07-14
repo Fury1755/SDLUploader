@@ -6,3 +6,6 @@
 
 ### 13-07-2026
 - remember, when we test, we are testing for behaviour, not implementation. Behaviour is what the function does. Implementation is how the function does what it does. We don't care about how, we care about what.
+
+### 14-07-2026
+- you can pass functions as an argument. They are of type 'Callable'
