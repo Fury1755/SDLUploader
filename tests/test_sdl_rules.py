@@ -4,7 +4,7 @@ Tests text parsing rules.
 
 import pytest
 
-from src.file_splitter.text_parser import rules
+from file_splitter.text_parser.sdl_rules import rules
 from dataclasses import fields
 
 

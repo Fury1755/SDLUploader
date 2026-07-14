@@ -10,7 +10,7 @@ from pymupdf import Document, Page
 from tqdm import tqdm
 
 from src.ocr_engine.base import OCREngine
-from src.file_splitter.text_parser import rules_engine
+from file_splitter.text_parser import rules_engine
 from src.file_splitter.os_utils import create_folder
 
 
